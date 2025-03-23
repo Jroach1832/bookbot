@@ -1,7 +1,12 @@
 from collections import defaultdict
+import sys
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        exit(1)
+    
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     character_counts = get_character_counts(text)
     counts_for_sorting = [{"name": name, "num": freq} for name, freq in character_counts.items() if name.isalpha()]
